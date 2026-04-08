@@ -6,6 +6,8 @@ An intelligent educational platform designed for CBSE students to enhance their 
 
 Educhat is an innovative learning companion that helps CBSE students across all classes interact with their subjects in a more engaging and interactive way. Whether you're studying for exams, working through homework, or exploring new concepts, Educhat has you covered.
 
+> Note: The frontend will be developed using AI coding agents like Claude Code and Open Code. This approach is chosen because the current focus is on backend expertise, and it is an experiment in what happens when the full development workflow is delegated to AI agents.
+
 ## Features
 
 ### 📚 Subject-Based Learning
