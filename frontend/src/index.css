@@ -1,0 +1,129 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+  
+  body {
+    @apply bg-gray-50 text-gray-900;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply px-4 py-2 rounded-lg font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2;
+  }
+  
+  .btn-primary {
+    @apply btn bg-primary-600 text-white hover:bg-primary-700 focus:ring-primary-500;
+  }
+  
+  .btn-secondary {
+    @apply btn bg-white text-gray-700 border border-gray-300 hover:bg-gray-50 focus:ring-gray-500;
+  }
+  
+  .btn-ghost {
+    @apply btn text-gray-600 hover:bg-gray-100 hover:text-gray-900;
+  }
+  
+  .card {
+    @apply bg-white rounded-xl shadow-sm border border-gray-200 p-6;
+  }
+  
+  .input {
+    @apply w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all;
+  }
+  
+  .textarea {
+    @apply input resize-none;
+  }
+  
+  .sidebar-item {
+    @apply flex items-center gap-3 px-4 py-3 text-gray-600 rounded-lg hover:bg-gray-100 hover:text-gray-900 transition-colors cursor-pointer;
+  }
+  
+  .sidebar-item.active {
+    @apply bg-primary-50 text-primary-700;
+  }
+  
+  .chat-message {
+    @apply max-w-3xl mx-auto p-4;
+  }
+  
+  .chat-message.user {
+    @apply bg-white;
+  }
+  
+  .chat-message.assistant {
+    @apply bg-gray-50;
+  }
+}
+
+@layer utilities {
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary-600 to-purple-600 bg-clip-text text-transparent;
+  }
+  
+  .gradient-bg {
+    @apply bg-gradient-to-br from-primary-500 via-purple-500 to-pink-500;
+  }
+}
+
+/* Scrollbar styles */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* Markdown styles */
+.markdown h1 {
+  @apply text-2xl font-bold mb-4;
+}
+
+.markdown h2 {
+  @apply text-xl font-bold mb-3;
+}
+
+.markdown h3 {
+  @apply text-lg font-bold mb-2;
+}
+
+.markdown p {
+  @apply mb-4 leading-relaxed;
+}
+
+.markdown ul {
+  @apply list-disc list-inside mb-4;
+}
+
+.markdown ol {
+  @apply list-decimal list-inside mb-4;
+}
+
+.markdown code {
+  @apply bg-gray-100 px-1 py-0.5 rounded text-sm font-mono;
+}
+
+.markdown pre {
+  @apply bg-gray-900 text-white p-4 rounded-lg overflow-x-auto mb-4;
+}
+
+.markdown blockquote {
+  @apply border-l-4 border-primary-500 pl-4 italic my-4;
+}
