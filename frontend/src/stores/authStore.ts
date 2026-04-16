@@ -4,10 +4,11 @@ import type { User } from '@/types'
 
 interface AuthState {
   user: User | null;
+  accessToken: string | null;
+  refreshToken: string | null;
   isAuthenticated: boolean;
   isLoading: boolean;
-  setUser: (user: User | null) => void;
-  login: (user: User) => void;
+  login: (user: User, accessToken: string, refreshToken: string) => void;
   logout: () => void;
   setLoading: (loading: boolean) => void;
 }
@@ -16,11 +17,14 @@ export const useAuthStore = create<AuthState>()(
   persist(
     (set) => ({
       user: null,
+      accessToken: null,
+      refreshToken: null,
       isAuthenticated: false,
       isLoading: true,
-      setUser: (user) => set({ user, isAuthenticated: !!user }),
-      login: (user) => set({ user, isAuthenticated: true, isLoading: false }),
-      logout: () => set({ user: null, isAuthenticated: false, isLoading: false }),
+      login: (user, accessToken, refreshToken) =>
+        set({ user, accessToken, refreshToken, isAuthenticated: true, isLoading: false }),
+      logout: () =>
+        set({ user: null, accessToken: null, refreshToken: null, isAuthenticated: false, isLoading: false }),
       setLoading: (loading) => set({ isLoading: loading }),
     }),
     {

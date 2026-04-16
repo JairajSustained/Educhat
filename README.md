@@ -73,9 +73,26 @@ Educhat is an innovative learning companion that helps CBSE students across all 
 ## Configuration
 
 ### Google OAuth Setup
-1. Create a project in [Google Cloud Console](https://console.cloud.google.com/)
-2. Set up OAuth 2.0 credentials (clientid and client secret)
-3. Add the credentials to your Django settings
+
+1. Go to [Google Cloud Console](https://console.cloud.google.com/) and create a project.
+2. Navigate to **APIs & Services → Credentials** and create an **OAuth 2.0 Client ID** (application type: Web).
+3. Under **Authorized redirect URIs**, add:
+   ```
+   http://localhost:8000/api/auth/google/callback/
+   ```
+4. Copy the Client ID and Client Secret into `backend/.env`:
+   ```env
+   GOOGLE_CLIENT_ID=your-client-id
+   GOOGLE_CLIENT_SECRET=your-client-secret
+   ```
+
+**Login flow:**
+- The user clicks "Continue with Google" on the login page.
+- The frontend redirects to `/api/auth/google/login/` (Django).
+- Django redirects to Google for authentication.
+- Google returns to `/api/auth/google/callback/` (Django) with an auth code.
+- Django exchanges the code for tokens, creates or retrieves the user, and issues a JWT access/refresh token pair.
+- The user is redirected to the frontend at `/auth/success?access=<token>&refresh=<token>`, where the tokens are stored and the session begins.
 
 ## Usage
 

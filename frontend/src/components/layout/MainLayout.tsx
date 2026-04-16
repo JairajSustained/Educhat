@@ -9,7 +9,7 @@ export function MainLayout() {
   return (
     <div className="flex h-screen bg-gray-50">
       {/* Desktop Sidebar */}
-      <div className="hidden lg:block">
+      <div className="hidden lg:block flex-shrink-0">
         <Sidebar />
       </div>
       

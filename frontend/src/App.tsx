@@ -3,6 +3,7 @@ import { useEffect } from 'react'
 import { useAuthStore } from '@/stores'
 import { MainLayout } from '@/components/layout/MainLayout'
 import { LoginPage } from '@/pages/LoginPage'
+import { AuthSuccessPage } from '@/pages/AuthSuccessPage'
 import { DashboardPage } from '@/pages/DashboardPage'
 import { ChatPage } from '@/pages/ChatPage'
 import { FilesPage } from '@/pages/FilesPage'
@@ -13,33 +14,33 @@ import { SubjectSelectionPage } from '@/pages/SubjectSelectionPage'
 
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const { isAuthenticated, isLoading } = useAuthStore()
-  
+
   if (isLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-600"></div>
+      <div className="min-h-screen flex items-center justify-center bg-gray-50">
+        <div className="w-7 h-7 border-2 border-gray-300 border-t-gray-700 rounded-full animate-spin" />
       </div>
     )
   }
-  
+
   if (!isAuthenticated) {
     return <Navigate to="/login" replace />
   }
-  
+
   return <>{children}</>
 }
 
 function App() {
   const { setLoading } = useAuthStore()
-  
+
   useEffect(() => {
-    // Check for existing auth on mount
     setLoading(false)
   }, [setLoading])
-  
+
   return (
     <Routes>
       <Route path="/login" element={<LoginPage />} />
+      <Route path="/auth/success" element={<AuthSuccessPage />} />
       <Route
         path="/"
         element={
